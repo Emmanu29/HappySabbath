@@ -10,7 +10,7 @@ html, body {
     position: absolute;
     text-align: center;
     width: 100%;
-    top: 10%; /* Adjust top position for mobile */
+    top: 5%; /* Adjust top position for mobile */
     left: 50%;
     transform: translateX(-50%);
     font-size: 50px; /* Adjust font size for mobile */
@@ -33,7 +33,7 @@ html, body {
     position: absolute;
     width: 250px;
     height: 200px;
-    top: 70%;
+    top: 65%;
     left: 50%;
     margin-top: -70px;
     margin-left: -125px;

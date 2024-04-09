@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cake</title>
+<title>Happ Sabbath</title>
 <style>
     .list-items-container {
         width: 100%;
@@ -26,15 +26,42 @@
 
     @media only screen and (max-width: 600px) {
     .list-items-container {
-        font-size: 40px; /* Adjust font size for smaller screens */
+        font-size: 35px; /* Adjust font size for smaller screens */
+        top: 40%; /* Center vertically */
     }
 }
 
-     /* Apply text-transform: uppercase; to all li elements */
-     #left-list li,
-    #right-list li {
-        text-transform: uppercase;
+.message {
+    position: absolute;
+    text-align: center;
+    bottom: 50px;
+    width: 40%; /* Adjust width for smaller screens */
+    max-width: 200px; /* Limit maximum width */
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: Arial, sans-serif;
+    font-size: 16px; /* Adjust font size for smaller screens */
+    color: #f9f871;
+    background: #1126dd;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    opacity: 0.8;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.message:hover {
+    opacity: 1;
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 600px) {
+    .message {
+        bottom: 10%;
+        width: 30%; /* Adjust width for smaller screens */
+        font-size: 14px; /* Adjust font size for smaller screens */
     }
+}
 </style>
 <link rel="stylesheet" href="cake.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -94,6 +121,8 @@
     </div>
 </div>
 
+<div class="message">Touch the flame to blow</div>
+
 <!-- Add the list-items-container here -->
 <div class="list-items-container"></div>
 
@@ -106,6 +135,7 @@
     <source src="./music/blow.mp3" type="audio/mp3">
     Your browser does not support the audio element.
 </audio>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         function clickCandle() {
@@ -113,6 +143,9 @@
             
             // Hides the flame
             document.querySelector('.flame').style.display = 'none';
+    
+            // Hide the touch message
+            document.querySelector('.message').style.display = 'none';
     
             // Play the audio
             document.getElementById('blowSound').play();
@@ -245,6 +278,16 @@
         // Attach click event to the candle flame
         document.querySelector('.flame').addEventListener('click', clickCandle);
     
+        // Function to handle touch events
+        function touchHandler(event) {
+            if (event.target.classList.contains('flame')) {
+                clickCandle();
+            }
+        }
+
+        // Add touch event listener
+        document.addEventListener('touchstart', touchHandler, false);
+    
         // Attach keydown event to trigger clickCandle function
         document.addEventListener('keydown', function(event) {
             if (event.keyCode === 13 || event.keyCode === 32) {
@@ -252,7 +295,7 @@
             }
         });
     });
-    </script>
+</script>
     
 </body>
 </html>
