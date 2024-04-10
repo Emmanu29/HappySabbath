@@ -146,9 +146,7 @@
     
             // Hide the touch message
             document.querySelector('.message').style.display = 'none';
-    
-            // Play the audio
-            document.getElementById('blowSound').play();
+
             setTimeout(function() {
                 document.getElementById('myAudio').play();
             }, 500);
@@ -245,6 +243,25 @@
     
             createConfetti();
             animateConfetti();
+
+            // Attach click event to the candle flame
+            document.querySelector('.flame').addEventListener('click', function() {
+                // Play audio on click
+                var audioPromise = document.getElementById('blowSound').play();
+                
+                // Check if audio playback was successful
+                if (audioPromise !== undefined) {
+                    audioPromise.then(function() {
+                        // Audio played successfully, now call clickCandle function
+                        clickCandle();
+                    }).catch(function(error) {
+                        console.error("Audio playback failed:", error);
+                    });
+                } else {
+                    // For browsers that do not return a Promise from play() (e.g., Safari)
+                    clickCandle();
+                }
+            });
     
             // List items animation
             var listItems = document.querySelectorAll('#left-list li, #right-list li');
