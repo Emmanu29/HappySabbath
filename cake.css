@@ -13,7 +13,7 @@ html, body {
     top: 5%; /* Adjust top position for mobile */
     left: 50%;
     transform: translateX(-50%);
-    font-size: 50px; /* Adjust font size for mobile */
+    font-size: 38px; /* Adjust font size for mobile */
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     font-family: "Allura", cursive;
